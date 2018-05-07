@@ -91,7 +91,7 @@ public class GlobeSortServer {
             startTime = System.currentTimeMillis() * 1.0 / 1000.0;
             Integer[] values = req.getValuesList().toArray(new Integer[req.getValuesList().size()]);
             Arrays.sort(values);
-            endTime = System.currentTimeMillis() / 1000;
+            endTime = System.currentTimeMillis() * 1.0 / 1000.0;
             Double timeElapsed = endTime - startTime;
             IntArray.Builder responseBuilder = IntArray.newBuilder();
             for(Integer val : values) {
