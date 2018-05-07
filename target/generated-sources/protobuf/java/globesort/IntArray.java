@@ -16,6 +16,7 @@ public  final class IntArray extends
   }
   private IntArray() {
     values_ = java.util.Collections.emptyList();
+    time_ = 0D;
   }
 
   @java.lang.Override
@@ -64,6 +65,11 @@ public  final class IntArray extends
             input.popLimit(limit);
             break;
           }
+          case 17: {
+
+            time_ = input.readDouble();
+            break;
+          }
         }
       }
     } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -90,6 +96,7 @@ public  final class IntArray extends
             globesort.IntArray.class, globesort.IntArray.Builder.class);
   }
 
+  private int bitField0_;
   public static final int VALUES_FIELD_NUMBER = 1;
   private java.util.List<java.lang.Integer> values_;
   /**
@@ -113,6 +120,15 @@ public  final class IntArray extends
   }
   private int valuesMemoizedSerializedSize = -1;
 
+  public static final int TIME_FIELD_NUMBER = 2;
+  private double time_;
+  /**
+   * <code>double time = 2;</code>
+   */
+  public double getTime() {
+    return time_;
+  }
+
   private byte memoizedIsInitialized = -1;
   public final boolean isInitialized() {
     byte isInitialized = memoizedIsInitialized;
@@ -132,6 +148,9 @@ public  final class IntArray extends
     }
     for (int i = 0; i < values_.size(); i++) {
       output.writeInt32NoTag(values_.get(i));
+    }
+    if (time_ != 0D) {
+      output.writeDouble(2, time_);
     }
   }
 
@@ -154,6 +173,10 @@ public  final class IntArray extends
       }
       valuesMemoizedSerializedSize = dataSize;
     }
+    if (time_ != 0D) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeDoubleSize(2, time_);
+    }
     memoizedSize = size;
     return size;
   }
@@ -172,6 +195,10 @@ public  final class IntArray extends
     boolean result = true;
     result = result && getValuesList()
         .equals(other.getValuesList());
+    result = result && (
+        java.lang.Double.doubleToLongBits(getTime())
+        == java.lang.Double.doubleToLongBits(
+            other.getTime()));
     return result;
   }
 
@@ -186,6 +213,9 @@ public  final class IntArray extends
       hash = (37 * hash) + VALUES_FIELD_NUMBER;
       hash = (53 * hash) + getValuesList().hashCode();
     }
+    hash = (37 * hash) + TIME_FIELD_NUMBER;
+    hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+        java.lang.Double.doubleToLongBits(getTime()));
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -317,6 +347,8 @@ public  final class IntArray extends
       super.clear();
       values_ = java.util.Collections.emptyList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      time_ = 0D;
+
       return this;
     }
 
@@ -340,11 +372,14 @@ public  final class IntArray extends
     public globesort.IntArray buildPartial() {
       globesort.IntArray result = new globesort.IntArray(this);
       int from_bitField0_ = bitField0_;
+      int to_bitField0_ = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         values_ = java.util.Collections.unmodifiableList(values_);
         bitField0_ = (bitField0_ & ~0x00000001);
       }
       result.values_ = values_;
+      result.time_ = time_;
+      result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
     }
@@ -395,6 +430,9 @@ public  final class IntArray extends
           values_.addAll(other.values_);
         }
         onChanged();
+      }
+      if (other.getTime() != 0D) {
+        setTime(other.getTime());
       }
       onChanged();
       return this;
@@ -485,6 +523,32 @@ public  final class IntArray extends
     public Builder clearValues() {
       values_ = java.util.Collections.emptyList();
       bitField0_ = (bitField0_ & ~0x00000001);
+      onChanged();
+      return this;
+    }
+
+    private double time_ ;
+    /**
+     * <code>double time = 2;</code>
+     */
+    public double getTime() {
+      return time_;
+    }
+    /**
+     * <code>double time = 2;</code>
+     */
+    public Builder setTime(double value) {
+      
+      time_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>double time = 2;</code>
+     */
+    public Builder clearTime() {
+      
+      time_ = 0D;
       onChanged();
       return this;
     }
