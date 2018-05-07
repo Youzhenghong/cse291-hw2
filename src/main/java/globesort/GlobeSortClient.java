@@ -43,9 +43,22 @@ public class GlobeSortClient {
         serverStub.ping(Empty.newBuilder().build());
         System.out.println("Ping successful.");
 
+
+        Double startTime = 0.0;
+        Double endTime = 0.0;
+
+
         System.out.println("Requesting server to sort array");
+        startTime = System.currentTimeMillis()*1.0 / 1000.0;
         IntArray request = IntArray.newBuilder().addAllValues(Arrays.asList(values)).build();
         IntArray response = serverStub.sortIntegers(request);
+        endTime = System.currentTimeMillis()*1.0 / 1000.0;
+        Double timeElapsed = endTime - startTime;
+        // Application throuput
+        Double appThroughput = values.length / timeElapsed;
+        Double oneWayThroughput = values.length * 1.0 / ((timeElapsed - response.getSortTime())*1.0 / 2);
+        this.recordResult("Application Throuput Result", appsThroughput);
+        this.recordResult("One-Way Network Throuput Result", oneWayThroughput);
         System.out.println("Sorted array");
     }
 
@@ -91,17 +104,12 @@ public class GlobeSortClient {
         }
 
         Integer[] values = genValues(cmd_args.getInt("num_values"));
-        Double startTime = 0.0;
-        Double endTime = 0.0;
+        
         GlobeSortClient client = new GlobeSortClient(cmd_args.getString("server_ip"), cmd_args.getInt("server_port"));
         try {
-            startTime = System.currentTimeMillis()*1.0 / 1000.0;
+            
             client.run(values);
-            endTime = System.currentTimeMillis()*1.0 / 1000.0;
-            Double timeElapsed = endTime - startTime;
-            // Application throuput
-            Double appThrouput = cmd_args.getInt("num_values") / timeElapsed;
-            client.recordResult("Application Throuput Result", appThrouput);
+            
 
         } finally {
             client.shutdown();
