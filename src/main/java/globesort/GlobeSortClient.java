@@ -81,7 +81,9 @@ public class GlobeSortClient {
         }
         return res;
     }
-
+    private void recordResult(string des, Double value) {
+        System.out.println(des + " : " + value);
+    }
     public static void main(String[] args) throws Exception {
         Namespace cmd_args = parseArgs(args);
         if (cmd_args == null) {
@@ -89,12 +91,24 @@ public class GlobeSortClient {
         }
 
         Integer[] values = genValues(cmd_args.getInt("num_values"));
-
+        Double startTime = 0;
+        Double endTime = 0;
         GlobeSortClient client = new GlobeSortClient(cmd_args.getString("server_ip"), cmd_args.getInt("server_port"));
         try {
+            startTime = System.currentTimeMillis() / 1000;
             client.run(values);
+            endTime = System.currentTimeMillis() / 1000;
+            Double timeElapsed = endTime - startTime;
+            // Application throuput
+            Double appThrouput = cmd_args.getInt("num_values") / timeElapsed;
+            client.recordResult("Application Throuput Result", appThrouput);
+
         } finally {
             client.shutdown();
         }
+
+
+
+
     }
 }

@@ -1,2 +1,2 @@
- mvn protobuf:compile protobuf:compile-custom
- mvn package
+mvn protobuf:compile protobuf:compile-custom
+mvn package
