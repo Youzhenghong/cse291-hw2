@@ -39,9 +39,14 @@ public class GlobeSortClient {
     }
 
     public void run(Integer[] values) throws Exception {
+        Double pingStartTime = = 0.0;
+        Double pingEndTime = 0.0;
+
         System.out.println("Pinging " + serverStr + "...");
+        pingStartTime = System.currentTimeMillis()*1.0 / 1000.0;
         serverStub.ping(Empty.newBuilder().build());
-        System.out.println("Ping successful.");
+        pingEndTime = System.currentTimeMillis()*1.0 / 1000.0;
+        System.out.println("Ping successful.....latency is: " + (pingEndTime - pingStartTime) + " s");
 
 
         Double startTime = 0.0;
