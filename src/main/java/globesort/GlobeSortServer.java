@@ -86,7 +86,7 @@ public class GlobeSortServer {
 
         @Override
         public void sortIntegers(IntArray req, final StreamObserver<IntArray> responseObserver) {
-            System.out.println("ready to sort......size: " + Integer.getValuesCount());
+            System.out.println("ready to sort......size: " + req.getValuesCount());
             Double startTime = 0.0;
             Double endTime = 0.0;
             startTime = System.currentTimeMillis() * 1.0 / 1000.0;
