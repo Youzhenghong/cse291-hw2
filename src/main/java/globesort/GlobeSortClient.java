@@ -95,9 +95,9 @@ public class GlobeSortClient {
         Double endTime = 0.0;
         GlobeSortClient client = new GlobeSortClient(cmd_args.getString("server_ip"), cmd_args.getInt("server_port"));
         try {
-            startTime = System.currentTimeMillis() / 1000;
+            startTime = System.currentTimeMillis()*1.0 / 1000.0;
             client.run(values);
-            endTime = System.currentTimeMillis() / 1000;
+            endTime = System.currentTimeMillis()*1.0 / 1000.0;
             Double timeElapsed = endTime - startTime;
             // Application throuput
             Double appThrouput = cmd_args.getInt("num_values") / timeElapsed;
