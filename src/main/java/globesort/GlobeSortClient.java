@@ -91,8 +91,8 @@ public class GlobeSortClient {
         }
 
         Integer[] values = genValues(cmd_args.getInt("num_values"));
-        Double startTime = 0;
-        Double endTime = 0;
+        Double startTime = 0.0;
+        Double endTime = 0.0;
         GlobeSortClient client = new GlobeSortClient(cmd_args.getString("server_ip"), cmd_args.getInt("server_port"));
         try {
             startTime = System.currentTimeMillis() / 1000;
