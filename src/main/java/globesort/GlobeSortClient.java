@@ -57,7 +57,7 @@ public class GlobeSortClient {
         // Application throuput
         Double appThroughput = values.length / timeElapsed;
         Double oneWayThroughput = values.length * 1.0 / ((timeElapsed - response.getSortTime())*1.0 / 2);
-        this.recordResult("Application Throuput Result", appsThroughput);
+        this.recordResult("Application Throuput Result", appThroughput);
         this.recordResult("One-Way Network Throuput Result", oneWayThroughput);
         System.out.println("Sorted array");
     }
