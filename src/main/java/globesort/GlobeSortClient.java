@@ -81,7 +81,7 @@ public class GlobeSortClient {
         }
         return res;
     }
-    private void recordResult(string des, Double value) {
+    private void recordResult(String des, Double value) {
         System.out.println(des + " : " + value);
     }
     public static void main(String[] args) throws Exception {
