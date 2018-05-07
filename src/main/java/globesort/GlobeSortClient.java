@@ -39,7 +39,7 @@ public class GlobeSortClient {
     }
 
     public void run(Integer[] values) throws Exception {
-        Double pingStartTime = = 0.0;
+        Double pingStartTime = 0.0;
         Double pingEndTime = 0.0;
 
         System.out.println("Pinging " + serverStr + "...");
